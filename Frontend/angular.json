@@ -59,7 +59,7 @@
                   "maximumError": "1mb"
                 },
                 {
-                  "type": "css-inline-fonts",
+                  "type": "anyComponentStyle",
                   "maximumWarning": "20kb",
                   "maximumError": "25kb"
                 }
