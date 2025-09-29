@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DoctorService {
-  private apiUrl = 'http://localhost:4800/doctors';
-  // private apiUrl = 'https://cw-backend-wkhy.onrender.com/doctors';
+  // private apiUrl = 'http://localhost:4800/doctors';
+  private apiUrl = 'https://clinic-world.onrender.com/doctors';
 
   constructor(private http: HttpClient) { }
 
