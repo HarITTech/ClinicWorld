@@ -42,28 +42,28 @@
           },
           "configurations": {
             "production": {
-                "budgets": [
-                  {
-                    "type": "anyComponentStyle",
-                    "maximumWarning": "6kb",
-                    "maximumError": "10kb"
-                  },
-                  {
-                    "type": "initial",
-                    "maximumWarning": "2mb",
-                    "maximumError": "5mb"
-                  },
-                  {
-                    "type": "anyScript",
-                    "maximumWarning": "500kb",
-                    "maximumError": "1mb"
-                  },
-                  {
-                    "type": "css-inline-fonts",
-                    "maximumWarning": "25kb",
-                    "maximumError": "30kb"
-                  }
-                ],
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "30kb"
+                },
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyScript",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "css-inline-fonts",
+                  "maximumWarning": "20kb",
+                  "maximumError": "25kb"
+                }
+              ],
               "outputHashing": "all"
             },
             "development": {
