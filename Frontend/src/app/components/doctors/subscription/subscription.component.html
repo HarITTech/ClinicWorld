@@ -1,0 +1,24 @@
+<body>
+  <button type="button" class="back-btn" onclick="history.back()">
+    <i class="fa-solid fa-arrow-left"></i> Back
+  </button>
+  <div class="popup">
+    <div class="popup-card">
+      <h2 class="title">💼 Choose Your Plan</h2>
+      <p class="subtitle">Flexible options for every clinic – cancel anytime.</p>
+
+      <div class="plans">
+        <div class="plan" *ngFor="let plan of plans">
+          <div class="badge" *ngIf="plan.badge">{{ plan.badge }}</div>
+          <h5>{{ plan.name }}</h5>
+          <p class="price">{{ plan.price }}</p>
+          <ul>
+            <li *ngFor="let feature of plan.features">✔ {{ feature }}</li>
+          </ul>
+          <button class="btn" (click)="selectPlan(plan.planType)">Get Started</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>

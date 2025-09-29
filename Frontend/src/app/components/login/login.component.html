@@ -1,0 +1,43 @@
+<body>
+  <button type="button" class="back-btn" onclick="history.back()">
+    <i class="fa-solid fa-arrow-left"></i> Back
+  </button>
+  <div class="login-wrapper">
+    <!-- Left Image Section -->
+    <div class="login-illustration">
+      <img src="../../../../login_img4-removebg.png" alt="Doctor & Patient">
+    </div>
+
+    <!-- Right Form Section -->
+    <div class="login-card glass">
+      <h2>Welcome Back...</h2>
+      <p>Please enter your email and password</p>
+
+      <div class="form">
+        <label>Email Address</label>
+        <input type="email" placeholder="Enter email" [(ngModel)]="userInfo.email" required>
+
+        <label>Password</label>
+        <div class="password-wrapper">
+          <input [type]="password ? 'text' : 'password'" placeholder="Enter password" [(ngModel)]="userInfo.password"
+            required>
+          <i class="fa-solid password-toggle-icon" [ngClass]="password ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="togglePassword()"></i>
+        </div>
+
+        <label>Select Role</label>
+        <select id="role" [(ngModel)]="userInfo.role" required>
+          <option value="" disabled selected>Choose...</option>
+          <option value="doctor">Doctor</option>
+          <option value="patient">Patient</option>
+        </select>
+
+        <a class="forgot-link">Forgot Password?</a>
+
+        <button type="submit" class="login-btn" (click)="logIn()">Login</button>
+
+        <p class="signup-text">Don't have an account? <a (click)="signup()">Create Account</a></p>
+      </div>
+    </div>
+  </div>
+</body>

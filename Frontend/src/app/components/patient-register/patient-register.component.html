@@ -1,0 +1,48 @@
+<body>
+  <button type="button" class="back-btn" onclick="history.back()">
+        <i class="fa-solid fa-arrow-left"></i> Back
+    </button>
+  <div class="register-wrapper">
+    <div class="glass-card">
+      <!-- Left side: Form -->
+      <div class="form-section">
+        <h2>Sign Up</h2>
+        <div class="form">
+          <label>Full Name</label>
+          <input type="text" placeholder="Full Name" [(ngModel)]="users.fullName" required>
+
+          <label>Email</label>
+          <input type="email" placeholder="Email" [(ngModel)]="users.email" required>
+
+          <label>Mobile</label>
+          <input type="tel" placeholder="Mobile" [(ngModel)]="users.mobile" required>
+
+
+          <label>Password</label>
+          <div class="password-wrapper">
+            <input [type]="password ? 'text' : 'password'" placeholder="Enter password" [(ngModel)]="users.password"
+              required>
+            <!-- <i class='bx bx-show' id="togglePassword"></i> -->
+            <i class="fa-solid password-toggle-icon" [ngClass]="password ? 'fa-eye-slash' : 'fa-eye'"
+              (click)="togglePassword('pass')"></i>
+          </div>
+
+          <label>Conform Password</label>
+          <div class="password-wrapper">
+            <input [type]="c_password ? 'text' : 'password'" placeholder="Enter conform password"
+              [(ngModel)]="users.confirmPassword">
+            <i class="fa-solid password-toggle-icon" [ngClass]="c_password ? 'fa-eye-slash' : 'fa-eye'"
+              (click)="togglePassword('c_pass')"></i>
+            <!-- <i class='bx bx-show' id="togglePassword"></i> -->
+          </div>
+          <button type="submit" class="add-btn" (click)="addUser()">Sign Up</button>
+        </div>
+      </div>
+
+      <!-- Right side: Illustration -->
+      <div class="image-section">
+        <img src="../../../../user_register.png" alt="Registration Illustration">
+      </div>
+    </div>
+  </div>
+</body>

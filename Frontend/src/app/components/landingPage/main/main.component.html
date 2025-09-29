@@ -1,0 +1,156 @@
+<html>
+
+<body>
+  <main class="container">
+    <section class="hero" role="region" aria-label="Hero">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <span class="eyebrow">Your health, just a click away</span>
+
+          <h1>
+            Find <span class="headline-gradient">trusted doctors</span> & book appointments online <span
+              class="headline-gradient"> — anytime.</span>
+          </h1>
+
+          <p class="lead">
+            Our platform connects patients with qualified doctors nearby. Book appointments, check reviews, and manage
+            your healthcare seamlessly. Doctors can manage their patients, schedules, and clinic all in one place.
+          </p>
+
+          <div class="hero-cta">
+            <button class="btn-primary" (click)="userRegistration()">Find a Doctor</button>
+            <button class="btn-ghost" (click)="doctorRegistration()">I’m a Doctor</button>
+          </div>
+        </div>
+
+        <div class="mockup" aria-hidden="true">
+          <div class="screen">
+            <div class="menu-dots">
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+
+            <div class="fake-title"></div>
+
+            <div class="card-row" style="margin-top:auto">
+              <div class="mini-card">
+                <div style="height:10px;width:50%;border-radius:6px;background:rgba(255,255,255,0.03)">
+                </div>
+                <div style="height:8px;width:80%;border-radius:6px;background:rgba(255,255,255,0.02)">
+                </div>
+                <div style="margin-top:auto;font-size:12px;color:var(--ld-muted)">Live preview</div>
+              </div>
+
+              <div class="mini-card">
+                <div style="height:10px;width:60%;border-radius:6px;background:rgba(255,255,255,0.03)">
+                </div>
+                <div style="height:8px;width:66%;border-radius:6px;background:rgba(255,255,255,0.02)">
+                </div>
+                <div style="margin-top:auto;font-size:12px;color:var(--ld-muted)">Interactions</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="features" role="region" aria-label="Features">
+      <div class="container" style="padding-top:6px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:18px">
+          <div>
+            <h2 style="margin:0;font-size:22px">What's inside</h2>
+            <div style="color:var(--ld-muted);margin-top:6px">Everything you need for smarter healthcare access. A
+              Powerful tools to connect doctors and patients seamlessly.</div>
+          </div>
+          <div style="color:var(--ld-muted);font-weight:700">• Trusted Care • Easy • Secure • Reliable • 24/7 Access
+          </div>
+        </div>
+
+        <div class="cards" role="list">
+          <div class="card" role="listitem">
+            <!-- <div class="icon">Doctor Registration</div> -->
+            <div>
+              <h3>I am a Doctor</h3>
+              <p>Register, manage patients, appointments, and your clinic profile — all digital.</p>
+              <a type="button" (click)="doctorRegistration()"
+                class="icon">Register as Doctor</a>
+            </div>
+          </div>
+
+          <div class="card" role="listitem">
+            <!-- <div class="icon">B</div> -->
+            <div>
+              <h3>I have an Account</h3>
+              <p>Login to continue your healthcare journey — whether you’re a patient or a doctor.</p>
+              <a type="button" (click)="login()" class="icon">Login Now</a>
+            </div>
+          </div>
+
+          <div class="card" role="listitem">
+            <!-- <div class="icon">C</div> -->
+            <div>
+              <h3>I am a Patient</h3>
+              <p>Find the best doctors near you, read reviews, and book appointments instantly.</p>
+              <a type="button" (click)="userRegistration()" class="icon">Register
+                as Patient</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+      <div class="container">
+        <h2 class="reveal">What clients say about us</h2>
+
+        <div class="test-grid">
+          <figure class="test-card reveal delay-1">
+            <blockquote>“Booking an appointment has never been this easy. I found a nearby doctor in seconds!”
+            </blockquote>
+            <figcaption>— Anya, Head of Growth</figcaption>
+          </figure>
+
+          <figure class="test-card reveal delay-2">
+            <blockquote>“Managing my clinic and patients is seamless now. Saves me hours every week.”</blockquote>
+            <figcaption>— Jordan, Product</figcaption>
+          </figure>
+
+          <figure class="test-card reveal delay-3">
+            <blockquote>“Finally, a platform that makes healthcare simple and accessible.”</blockquote>
+            <figcaption>— Ritesh, Founder</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / Footer -->
+    <section id="get" style="padding:28px 0 18px">
+      <div class="container"
+        style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
+        <div>
+          <h3 style="margin:0 0 6px 0">Ready to go Digital?</h3>
+          <div style="color:var(--ld-muted)">Your health deserves the best care. Get started today!</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLAB CTA -->
+    <section class="collab">
+      <div class="container reveal">
+        <h3>We’ll join your squad — putting the collab in collaboration.</h3>
+        <a class="btn-primary" href="#">Book a Call</a>
+      </div>
+    </section>
+
+  </main>
+</body>
+
+</html>

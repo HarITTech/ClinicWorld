@@ -1,0 +1,49 @@
+<div class="welcome-user">Welcome, {{username}}</div>
+
+
+<div class="container py-4">
+  <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center my-4">
+    <div class="search-section">
+      <div class="modern-search-bar">
+        <button type="submit"><i class="fas fa-search"></i></button>
+        <input type="text" placeholder="Search by patient or doctor..." [(ngModel)]="searchTerm"
+          (ngModelChange)="onSearchChange()">
+      </div>
+    </div>
+    <div class="search-section">
+      <div class="modern-search-bar">
+        <button type="submit"><i class="fa-solid fa-calendar-days"></i></button>
+        <input type="date" [(ngModel)]="searchDate" (ngModelChange)="onSearchChange()">
+      </div>
+    </div>
+    <div class="search-section">
+      <div class="modern-search-bar">
+        <button type="submit"><i class="fa-solid fa-user"></i></button>
+        <input type="number" placeholder="Search by age..." [(ngModel)]="searchAge" (ngModelChange)="onSearchChange()">
+      </div>
+    </div>
+    <button class="btn btn-sm btn-outline-secondary" (click)="resetFilters()">Reset</button>
+  </div>
+  <div class="row">
+    <!-- Loop starts here -->
+    @for(appointment of filteredAppointments; track $index){
+    <div class="col-lg-6 col-sm-12 col-md-6 mb-3">
+      <div class="card compact-card rounded-4 p-3">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h4 class="mb-0 fw-bold text-highlight">{{appointment.patientName}}</h4>
+          @if(appointment.patientStatus === 'completed'){
+          <span class="badge status-completed">Completed</span>
+          }@else if (appointment.patientStatus === 'notCheck') {
+          <span class="badge status-notcheck">Not Check</span>
+          }
+        </div>
+
+        <p class="mb-1 small"><strong>Age:</strong> {{appointment.patientAge}}</p>
+        <p class="mb-1 small"><strong>Date:</strong> {{appointment.appointmentDate}}</p>
+        <p class="mb-1 small"><strong>Appointment No:</strong> APPT#{{appointment.appointmentNumber}}</p>
+        <p class="mb-1 small"><strong>Doctor:</strong> {{appointment.doctorName}}</p>
+      </div>
+    </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,173 @@
+.welcome-user {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  color: var(--highlight);
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: inherit;
+  text-shadow: 0 1px 8px #162a4155;
+  /* z-index: 2; */
+}
+@media (max-width: 768px) {
+  .welcome-user {
+    position: static;
+    display: block;
+    text-align: right;
+    margin: 1rem 1rem 0 0;
+    font-size: 1.5rem;
+  }
+}
+
+/* Container for search fields and button */
+.d-flex.flex-wrap.gap-2.justify-content-between.align-items-center.my-4 {
+  padding: 0 0.5rem;
+}
+
+/* Search sections wrapper */
+.search-section {
+  flex: 1 1 250px;
+  max-width: 300px;
+  min-width: 210px;
+}
+
+/* Modern search bar container */
+.modern-search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--sidebar-icon-bg);
+  border-radius: 2rem;
+  box-shadow: 0 2px 12px #22305233;
+  padding: 0.25rem 0.75rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.modern-search-bar:hover,
+.modern-search-bar:focus-within {
+  box-shadow: 0 0 16px var(--highlight);
+}
+
+/* Search input fields */
+.modern-search-bar input[type="text"],
+.modern-search-bar input[type="date"],
+.modern-search-bar input[type="number"] {
+  flex: 1 1 auto;
+  background: transparent;
+  border: none;
+  color: var(--sidebar-link-color);
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 2rem;
+  outline: none;
+}
+
+/* Placeholder color */
+.modern-search-bar input::placeholder {
+  color: #aacade;
+  opacity: 0.7;
+}
+
+/* Remove default spinner on number/date input */
+.modern-search-bar input[type="number"],
+.modern-search-bar input[type="date"]::-webkit-inner-spin-button,
+.modern-search-bar input[type="date"]::-webkit-calendar-picker-indicator {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Search button next to input */
+.modern-search-bar button {
+  background: transparent;
+  border: none;
+  color: var(--highlight);
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.modern-search-bar button:hover {
+  color: #19caff;
+}
+
+/* Reset button */
+.btn-outline-secondary {
+  border-color: var(--highlight);
+  color: var(--highlight);
+  font-weight: 600;
+  padding: 0.25rem 0.9rem;
+  border-radius: 0.6rem;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  min-width: 90px;
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus {
+  background-color: var(--highlight);
+  color: #131f2d;
+  border-color: var(--highlight);
+  outline: none;
+}
+
+.compact-card {
+  font-family: 'Segoe UI', sans-serif;
+  max-width: 100%;
+  transition: all 0.3s ease;
+  background: rgba(15, 32, 39, 0.7);
+  backdrop-filter: blur(4px);
+  margin-bottom: 1rem;
+  color: var(--sidebar-link-color);
+  font-weight: 400;
+  border: 1px solid #244263cc;
+  box-shadow: 0 2px 12px rgba(16, 36, 56, 0.4);
+  padding: 1rem 1.3rem;
+  border-radius: 1rem;
+}
+
+.compact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px var(--highlight);
+}
+
+.badge {
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 0.28em 0.6em;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.33);
+}
+
+.status-completed {
+  background-color: #13eb85;
+  color: #0f2027;
+  border: 1px solid #13eb85;
+}
+
+.status-notcheck {
+  background-color: var(--danger);
+  color: #131f2d;
+  border: 1px solid var(--danger);
+}
+
+.small {
+  font-size: 1rem;
+  color: var(--sidebar-link-color);
+}
+
+strong {
+  color: #bef6fd;
+}
+
+@media (max-width: 576px) {
+  .compact-card {
+    margin: 0 0 1rem 0;
+    padding: 1rem;
+  }
+}

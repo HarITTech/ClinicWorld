@@ -1,0 +1,67 @@
+<body>
+  <button type="button" class="back-btn" onclick="history.back()">
+    <i class="fa-solid fa-arrow-left"></i> Back
+  </button>
+  <!-- <div class="main-wrapper">
+        <div class="illustration">
+            <img src="doctor_register1.png" alt="Doctor Registration Illustration">
+        </div> -->
+
+  <!-- Right Glassy Form -->
+  <div class="container">
+    <h1 class="title">Doctor Registration</h1>
+    <div class="form">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Dr. John Doe" [(ngModel)]="doctor.name">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="doctor@example.com" [(ngModel)]="doctor.email">
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="tel" placeholder="+91-9876543210" [(ngModel)]="doctor.phone">
+      </div>
+      <div class="form-group">
+        <label>Max Tokens / Day</label>
+        <input type="number" placeholder="20" [(ngModel)]="doctor.maxTokensPerDay">
+      </div>
+      <div class="form-group">
+        <label>Specialization</label>
+        <input type="text" placeholder="e.g. Cardiologist" [(ngModel)]="doctor.specialization">
+      </div>
+      <div class="form-group">
+        <label>Working Days</label>
+        <div class="days-container">
+          <input type="checkbox" id="mon" value="Monday" (change)="onDayChange($event)">
+          <label for="mon">Mon</label>
+          <input type="checkbox" id="tue" value="Tuesday" (change)="onDayChange($event)">
+          <label for="tue">Tue</label>
+          <input type="checkbox" id="wed" value="Wednesday" (change)="onDayChange($event)">
+          <label for="wed">Wed</label>
+          <input type="checkbox" id="thu" value="Thursday" (change)="onDayChange($event)">
+          <label for="thu">Thu</label>
+          <input type="checkbox" id="fri" value="Friday" (change)="onDayChange($event)">
+          <label for="fri">Fri</label>
+          <input type="checkbox" id="sat" value="Saturday" (change)="onDayChange($event)">
+          <label for="sat">Sat</label>
+          <input type="checkbox" id="sun" value="Sunday" (change)="onDayChange($event)">
+          <label for="sun">Sun</label>
+        </div>
+      </div>
+      <div class="time-group">
+        <div class="form-group">
+          <label>Start Time</label>
+          <input type="time" [(ngModel)]="doctor.startTime">
+        </div>
+        <div class="form-group">
+          <label>End Time</label>
+          <input type="time" [(ngModel)]="doctor.endTime">
+        </div>
+      </div>
+      <button type="submit" class="btn" (click)="register()">Register</button>
+    </div>
+  </div>
+  <!-- </div> -->
+</body>

@@ -1,0 +1,207 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: radial-gradient(1200px 600px at 10% 10%, rgba(124, 58, 237, 0.1), transparent 8%),
+                radial-gradient(900px 500px at 90% 90%, rgba(6, 182, 212, 0.08), transparent 8%),
+                var(--pRegister-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.register-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.glass-card {
+    display: flex;
+    backdrop-filter: blur(20px);
+    background: var(--pRegister-glass-bg);
+    border: 1px solid var(--pRegister-glass-border);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    max-width: 900px;
+    width: 100%;
+}
+
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    border: none;
+    color: var(--login-white);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: color 0.2s ease;
+}
+
+.back-btn i {
+    font-size: 1.1rem;
+}
+
+.back-btn:hover {
+    color: var(--login-accent2);
+}
+
+
+.form-section {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--login-white);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+
+
+input, select {
+    padding: 0.7rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--pRegister-bg);
+    color: var(--login-white);
+    outline: none;
+    transition: transform 0.2s ease;
+}
+
+input:focus, select:focus {
+    border: 1px solid var(--pRegister-accent1);
+    transform: scale(1.02);
+}
+
+button {
+    padding: 0.8rem;
+    background: var(--pRegister-accent2);
+    color: var(--login-white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    /* background: var(--pRegister-accent1); */
+    transform: scale(1.05);
+}
+
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 2.5rem; /* Space for eye icon */
+}
+
+.password-wrapper i {
+    position: absolute;
+    right: 10px;
+    font-size: 1.2rem;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.password-wrapper i:hover {
+    color: var(--pRegister-accent1);
+}
+
+
+.add-btn {
+    padding: 0.8rem;
+    background: linear-gradient(135deg, var(--pRegister-accent2), var(--pRegister-accent1));
+    color: var(--login-white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.add-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.5);
+}
+
+.image-section {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.image-section img {
+    max-width: 420px;
+    width: 100%;
+    animation: float 4s ease-in-out infinite;
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+    .login-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 900px) {
+  .glass-card {
+    flex-direction: column;   /* stack vertically */
+  }
+
+  .image-section {
+    order: -1;                /* move image above form */
+    padding: 1rem 2rem;       /* optional: adjust padding */
+  }
+
+  .form-section {
+    padding: 1.5rem;
+  }
+}
+

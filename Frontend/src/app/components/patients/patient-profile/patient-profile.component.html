@@ -1,0 +1,179 @@
+<div class="profile-bg d-flex align-items-center justify-content-center min-vh-100">
+  <div class="profile-card animate-fade-up">
+    <div class="text-center position-relative">
+      <img src="https://ui-avatars.com/api/?name={{username}}&background=22e1ff&color=131f2d&size=128"
+        class="profile-img mb-3"
+        style="width:110px; height:110px; border-radius:50%; border:4px solid #22e1ff; background:#244263;" />
+      <h4 class="fw-bold mb-1">
+        <span class="welcome-badge badge rounded-pill">Hey</span><span>{{username}}</span>
+      </h4>
+      <p class="mb-3" style="color: #bef6fd;">Welcome back to Clinic World</p>
+    </div>
+    <hr style="border-color:#244263;opacity:0.4;" />
+    <div class="px-2">
+      <p style="color:var(--sidebar-link-color);">
+        <strong style="color:var(--highlight);">Email: </strong>
+        <span style="color:#bef6fd;">{{email}}</span>
+      </p>
+      <p style="color:var(--sidebar-link-color);">
+        <strong style="color:var(--highlight);">Phone: </strong>
+        <span style="color:#bef6fd;">{{mobile}}</span>
+      </p>
+    </div>
+    <div class="text-center mt-3">
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <button class="btn profile-btn" (click)="editProfile(userId)">Edit Profile</button>
+        <button class="btn profile-btn" (click)="changePass(userId)">Change Password</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Update Profile Model box -->
+<!-- <div class="modal fade show" tabindex="-1" style="display: block;" *ngIf="showEditModal">
+  <div class="modal-dialog bg-transparent">
+    <div class="modal-content shadow transparent-bg">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Profile</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label>Name</label>
+            <input type="text" class="form-control" [(ngModel)]="fullName" name="fullName" />
+          </div>
+          <div class="mb-3">
+            <label>Phone</label>
+            <input type="text" class="form-control" [(ngModel)]="mobile" name="mobile" />
+          </div>
+          <div class="mb-3">
+            <label>Email</label>
+            <input type="email" class="form-control" [(ngModel)]="email" name="email" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn animated-button" (click)="closeModal()">Cancel</button>
+        <button class="btn animated-button" (click)="updateProfile()">Update</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="modal fade show d-block" tabindex="-1" *ngIf="showEditModal" role="dialog" aria-modal="true">
+  <div class="modal-dialog">
+    <div class="modal-content custom-modal-content shadow">
+      <div class="modal-header custom-modal-header">
+        <h5 class="modal-title">Update Profile</h5>
+        <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control custom-form-control" [(ngModel)]="fullName" name="fullName" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input type="text" class="form-control custom-form-control" [(ngModel)]="mobile" name="mobile" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control custom-form-control" [(ngModel)]="email" name="email" required />
+          </div>
+          <!-- <div class="mb-3">
+            <label class="form-label">Country</label>
+            <input type="email" class="form-control custom-form-control" [(ngModel)]="country" name="country" required />
+          </div> -->
+        </form>
+      </div>
+      <div class="modal-footer custom-modal-footer">
+        <button type="button" class="btn btn-cancel" (click)="closeModal()">Cancel</button>
+        <button type="button" class="btn btn-confirm" (click)="updateProfile()">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Change password model -->
+<!-- <div class="modal fade show" tabindex="-1" style="display: block;" *ngIf="showPasswordModal">
+  <div class="modal-dialog bg-transparent">
+    <div class="modal-content shadow transparent-bg">
+      <div class="modal-header">
+        <h5 class="modal-title">Change Password</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3 position-relative">
+          <label>Old Password</label>
+          <input [type]="showOldPassword ? 'text' : 'password'" class="form-control" [(ngModel)]="oldPassword" />
+          <i class="fa-solid" [ngClass]="showOldPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="togglePassword('old')"></i>
+        </div>
+
+        <div class="mb-3 position-relative">
+          <label>New Password</label>
+          <input [type]="showNewPassword ? 'text' : 'password'" class="form-control" [(ngModel)]="newPassword" />
+          <i class="fa-solid" [ngClass]="showNewPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="togglePassword('new')"></i>
+        </div>
+
+        <div class="mb-3 position-relative">
+          <label>Confirm Password</label>
+          <input [type]="showConfirmPassword ? 'text' : 'password'" class="form-control"
+            [(ngModel)]="confirmPassword" />
+          <i class="fa-solid" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="togglePassword('confirm')"></i>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn animated-button" (click)="closeModal()">Cancel</button>
+        <button class="btn animated-button" (click)="change()">Change</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="modal fade show d-block" tabindex="-1" *ngIf="showPasswordModal" role="dialog" aria-modal="true">
+  <div class="modal-dialog">
+    <div class="modal-content custom-modal-content shadow">
+      <div class="modal-header custom-modal-header">
+        <h5 class="modal-title">Change Password</h5>
+        <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3 position-relative">
+          <label class="form-label">Old Password</label>
+          <input [type]="showOldPassword ? 'text' : 'password'" class="form-control custom-form-control"
+            [(ngModel)]="oldPassword" />
+          <i class="fa-solid password-toggle-icon" [ngClass]="showOldPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="togglePassword('old')"></i>
+        </div>
+
+        <div class="mb-3 position-relative">
+          <label class="form-label">New Password</label>
+          <input [type]="showNewPassword ? 'text' : 'password'" class="form-control custom-form-control"
+            [(ngModel)]="newPassword" />
+          <i class="fa-solid password-toggle-icon" [ngClass]="showNewPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="togglePassword('new')"></i>
+        </div>
+
+        <div class="mb-3 position-relative">
+          <label class="form-label">Confirm Password</label>
+          <input [type]="showConfirmPassword ? 'text' : 'password'" class="form-control custom-form-control"
+            [(ngModel)]="confirmPassword" />
+          <i class="fa-solid password-toggle-icon" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="togglePassword('confirm')"></i>
+        </div>
+      </div>
+      <div class="modal-footer custom-modal-footer">
+        <button type="button" class="btn btn-cancel" (click)="closeModal()">Cancel</button>
+        <button type="button" class="btn btn-confirm" (click)="change()">Change</button>
+      </div>
+    </div>
+  </div>
+</div>

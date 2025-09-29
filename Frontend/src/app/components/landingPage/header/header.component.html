@@ -1,0 +1,208 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Clinic World - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f0f8ff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      color: #0083b0 !important;
+    }
+
+    .btn-custom {
+      border-radius: 20px;
+      padding: 8px 20px;
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    footer {
+      background-color: #343a40;
+      color: white;
+      padding: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#">Clinic World</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav me-3">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+
+        <div class="d-flex gap-2">
+          <a routerLink="doctor-registration" routerLinkActive="doctor-registration"
+            class="btn btn-outline-primary btn-custom">Doctor Register</a>
+          <a routerLink="user-registration" routerLinkActive="user-registration"
+            class="btn btn-outline-success btn-custom">User Register</a>
+          <a routerLink="login" routerLinkActive="login" class="btn btn-primary btn-custom">Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+
+  <footer class="mt-auto bg-dark text-white py-4 footer">
+  <div class="container text-center">
+    <p>&copy; 2025 Clinic World. All rights reserved.</p>
+    <p>
+      <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
+      <a href="#" class="text-decoration-none">Terms & Conditions</a>
+    </p>
+  </div>
+</footer>
+
+
+</body>
+
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+  <header class="container" role="banner">
+    <div class="nav">
+      <div class="brand" aria-label="brand">
+        <div class="logo">HT</div>
+        <div>
+          <div style="font-size:15px">HarIT Tech</div>
+          <div style="font-size:12px;color:var(--ld-muted);margin-top:2px">Creative Solutions</div>
+        </div>
+      </div>
+
+      <input class="mobile-toggle" type="checkbox" id="menu-toggle" aria-hidden="true" />
+      <label for="menu-toggle" class="hamburger" aria-hidden="true">
+        <span></span>
+      </label>
+
+      <nav class="primary" role="navigation" aria-label="Primary navigation">
+        <a routerLink="" routerLinkActive="active">Home</a>
+        <a routerLink="about" routerLinkActive="active">About</a>
+        <a routerLink="services" routerLinkActive="active">Services</a>
+        <a routerLink="contact" routerLinkActive="active">Contact</a>
+        <a class="cta" routerLink="login" routerLinkActive="login">Get started</a>
+        <!-- <button class="cta" routerLink="user-registration" routerLinkActive="login">Find a doctor</button> -->
+
+      </nav>
+
+      <!-- mobile menu -->
+      <div class="mobile-menu" role="menu" aria-hidden="false">
+        <a routerLink="" routerLinkActive="active">Home</a>
+        <a routerLink="about" routerLinkActive="active">About</a>
+        <a routerLink="services" routerLinkActive="active">Services</a>
+        <a routerLink="contact" routerLinkActive="active">Contact</a>
+        <a style="margin-top:6px" class="btn-primary" routerLink="login" routerLinkActive="login">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <router-outlet></router-outlet>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div class="logo" style="width:48px;height:48px">HT</div>
+            <div style="font-weight:800;font-size:16px">HarIT Tech Solution</div>
+          </div>
+          <div style="margin-top:12px;color:var(--ld-muted)">Building modern, animated interfaces and
+            products — handcrafted.</div>
+        </div>
+
+        <div style="min-width:220px">
+          <div style="display:flex;gap:18px">
+            <div>
+              <div style="font-weight:700;margin-bottom:8px">Product</div>
+              <div class="small">Features</div>
+              <div class="small">Pricing</div>
+              <div class="small">Releases</div>
+            </div>
+            <div>
+              <div style="font-weight:700;margin-bottom:8px">Company</div>
+              <a class="small" routerLink="" routerLinkActive="active">Home</a><br>
+              <a class="small" routerLink="about" routerLinkActive="active">About</a><br>
+              <a class="small" routerLink="services" routerLinkActive="active">Services</a><br>
+              <a class="small" routerLink="contact" routerLinkActive="active">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="border-top:1px solid rgba(255,255,255,0.02);margin-top:24px;padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+        <div style="color:var(--ld-muted)">© <span id="year"></span> HarIT Tech Solution</div>
+        <div style="color:var(--ld-muted)">Made with ❤️ • Pure HTML & CSS</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightweight script: set year only (optional, safe) -->
+  <script>
+    // small, unobtrusive script just to set the copyright year;
+    // if you want absolutely no JS, remove this <script> block.
+    try {
+      document.getElementById('year').textContent = new Date().getFullYear();
+    } catch (e) { }
+  </script>
+</body>

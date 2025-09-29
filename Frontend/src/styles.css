@@ -1,0 +1,89 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import 'animate.css'; */
+/* @import 'ngx-spinner/ngx-spinner.css'; */
+
+.toast-top-center {
+  top: 0;
+  left: 50%;
+  font-weight: 400;
+  transform: translateX(-50%);
+  position: fixed !important;   /* force fixed instead of absolute */
+  z-index: 9999 !important;     /* make sure it’s above everything */
+}
+
+
+:root {
+  --login-bg: #0f1724;
+  --login-card: rgba(255, 255, 255, 0.08);
+  --login-muted: #94a3b8;
+  --login-accent1: #7c3aed;
+  --login-accent2: #06b6d4;
+  --login-accent3: #f59e0b;
+  --login-blur: 18px;
+
+  --pRegister-bg: #0f1724;
+  --pRegister-glass-bg: rgba(255, 255, 255, 0.1);
+  --pRegister-glass-border: rgba(255, 255, 255, 0.2);
+  --pRegister-accent1: #7c3aed;
+  --pRegister-accent2: #06b6d4;
+
+  --Dr-bg: #0f1724;
+  --Dr-card: rgba(255, 255, 255, 0.06);
+  --Dr-muted: #94a3b8;
+  --Dr-accent1: #7c3aed;
+  --Dr-accent2: #06b6d4;
+  --Dr-accent3: #f59e0b;
+  --Dr-glass-border: rgba(255, 255, 255, 0.15);
+  --Dr-white: #ffffff;
+
+  --login-white: #ffffff;
+
+  --navbar-bg: #005C6B;
+  --main-bg1: #007D8A;
+  --main-bg2: #00A0A5;
+  --primary-text: #2D2F33;
+  --secondary-text: #4F5D73;
+  --success: #28A745;
+  --error: #DC3545;
+  --accent: #00B4D8;
+
+  --searchbar-bg: #007A87;
+  --card-bg: #c3f1fb;
+
+
+
+
+  --sidebar-bg: linear-gradient(160deg, #0F2027 0%, #2C5364 100%);
+  --main-section-bg: #2C5364;
+  --sidebar-link-color: #f2f7fa;
+  --sidebar-icon-bg: #244263;
+  --highlight: #22e1ff;
+  --content-bg: #131f2d;
+  --danger: #ff4646;
+
+
+
+
+  --ld-primary: #4f46e5;
+  --ld-secondary: #6366f1;
+  --ld-light: #f9fafb;
+  --ld-dark: #111827;
+  --ld-muted: #6b7280;
+  --ld-card-bg: rgba(255, 255, 255, 0.03);
+  --ld-glass: rgba(255, 255, 255, 0.04);
+  --ld-muted: rgba(255, 255, 255, 0.65);
+  --ld-muted-2: rgba(255, 255, 255, 0.45);
+
+
+  --ld-bg: #0f1724;
+  --card: #0b1220;
+  --ld-muted: #94a3b8;
+  --ld-accent1: #7c3aed;
+  --ld-accent2: #06b6d4;
+
+  --ld-glass: rgba(255, 255, 255, 0.04);
+  --ld-white: #ffffff;
+  --ld-max-width: 1200px;
+}
+
+/* Global body background and color */

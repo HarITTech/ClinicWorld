@@ -1,0 +1,106 @@
+<!-- <main class="search-section">
+  <div class="modern-search-bar">
+    <input type="search" placeholder="Search appointments, patients, or more..." [(ngModel)]="search"
+      (ngModelChange)="onSearchChange()">
+    <button type="submit"><i class="fas fa-search"></i></button>
+  </div>
+</main> -->
+
+<main class="search-section">
+  <span class="search-count">Appointments Booked: {{todaysAppointmentCount}}/{{maxTokens}}</span>
+  <div class="modern-search-bar">
+    <input
+      type="search"
+      placeholder="Search appointments, patients, or more..."
+      [(ngModel)]="search"
+      (ngModelChange)="onSearchChange()" />
+    <button type="submit"><i class="fas fa-search"></i></button>
+  </div>
+</main>
+
+
+<!-- [(ngModel)]="searchTerm" -->
+<!-- (ngModelChange)="onSearchChange()" -->
+
+@if(getAllAppointments.length > 0) {
+<section class="dashboard-container">
+  <div class="dashboard-title">
+    <i class="fa-regular fa-calendar-check"></i>
+    Today's Appointments
+  </div>
+  <div class="appointments-list">
+    @for (appointment of filteredAppointments; track $index) {
+    <div class="appointment-card">
+      <div class="user-title"><i class="fa-solid fa-user"></i> {{ appointment.patientName }}</div>
+      <div class="user-age">Age: {{ appointment.patientAge }}</div>
+      @if(appointment.patientProblem !== "") {
+      <div class="appt-detail"><span class="appt-label">Patient Problem:</span> {{ appointment.patientProblem }}</div>
+      }
+      <div class="appt-detail"><span class="appt-label">Booking Time:</span> {{ appointment.bookingTime |
+        date:'dd-MM-yyyy, hh:mm a' }}</div>
+      <div class="appt-detail"><span class="appt-label">Appointment Date:</span> {{ appointment.appointmentDate }}</div>
+      <div class="appt-detail"><span class="appt-label">Appointment No.:</span> {{ appointment.appointmentNumber }}
+      </div>
+      <div class="action-buttons">
+        <button class="btn btn-complete" (click)="completed(appointment._id)"><i class="fa-solid fa-check me-1"></i>
+          Complete</button>
+        <button class="btn btn-notchecked" (click)="notCheck(appointment._id)"><i class="fa-solid fa-xmark me-1"></i>
+          Not Checked</button>
+        <button class="btn btn-view" (click)="view(appointment.userId, appointment._id)"><i
+            class="fa-solid fa-eye me-1"></i> View</button>
+      </div>
+    </div>
+    }
+    <!-- Add more cards as needed -->
+  </div>
+</section>
+}
+@else {
+<div class="no-appt-container">
+  <div class="no-appt-icon">
+    <i class="fa-regular fa-face-dizzy"></i>
+  </div>
+  <div class="no-appt-title">
+    No Appointments for Today
+  </div>
+  <div class="no-appt-sub">
+    Once patients book appointments,<br>
+    they'll appear here automatically.
+  </div>
+</div>
+}
+
+
+
+<div class="modal fade show" tabindex="-1" style="display: block;" *ngIf="showViewModal" aria-modal="true"
+  role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content clinic-modal-content">
+
+      <div class="modal-header clinic-modal-header">
+        <h5 class="modal-title d-flex align-items-center gap-2">
+          <i class="fa-solid fa-stethoscope"></i>
+          Hello Doctor
+        </h5>
+        <button type="button" class="btn-close btn-close-white" (click)="closeModal()" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body clinic-modal-body px-4 py-3">
+        <p class="fs-6 mb-2">
+          I’m <strong>{{ userName }}</strong>, and I’ve scheduled this appointment for
+          <strong class="text-primary clinic-modal-patient">{{ patientName }}</strong>.
+        </p>
+        <p class="mb-0 text-muted">
+          Kindly review the patient details and assist them with your expertise.
+        </p>
+      </div>
+
+      <div class="modal-footer border-0 rounded-bottom-4 justify-content-end px-4 py-3">
+        <button type="button" class="btn btn-modal-outline rounded-pill px-4" (click)="closeModal()">
+          <i class="fa-solid fa-xmark me-2"></i>Close
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

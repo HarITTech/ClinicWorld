@@ -1,0 +1,348 @@
+.card {
+  background: var(--card-bg);
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
+}
+
+/* Larger gallery images */
+.gallery-img {
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Enlarge just Clinic Photos/Achievement cards */
+.card.photo-card {
+  min-height: 260px;
+  padding: 2rem 1.5rem !important;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border: 4px solid var(--accent);
+}
+
+.btn-accent {
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn-accent:hover {
+  background: #0096c7;
+  color: #fff;
+}
+
+.graph-area {
+  background: #fff;
+  border-radius: 1rem;
+  min-height: 280px;
+  margin-top: 2.5rem;
+}
+
+.fa-fw {
+  margin-right: .25rem;
+}
+
+.profile-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.1rem;
+}
+
+.profile-link,
+.profile-link:visited {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  background: #fff;
+  border: 1.5px solid var(--accent);
+  border-radius: 11px;
+  padding: 0.32em 1em;
+  transition: background 0.12s, color 0.11s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.98rem;
+}
+
+.profile-link:hover,
+.profile-link:focus {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+
+
+
+
+
+
+/* Modal card */
+.clinic-modal-content {
+  background: var(--card-bg);
+  border-radius: 17px;
+  border: 1.5px solid #b2e6f2;
+  box-shadow: 0 10px 38px 0 rgba(0, 180, 216, 0.10);
+  color: var(--primary-text);
+  animation: fadeInProfileModal 0.5s cubic-bezier(.21, 1.02, .43, 1.07);
+}
+
+@keyframes fadeInProfileModal {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(.97);
+  }
+
+  90% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.02);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.clinic-modal-header {
+  background: linear-gradient(120deg, var(--main-bg1), var(--main-bg2));
+  color: #fff;
+  border-top-left-radius: 17px;
+  border-top-right-radius: 17px;
+  border-bottom: none;
+  padding-bottom: .73em !important;
+}
+
+.clinic-modal-header .modal-title {
+  color: #fff;
+  font-size: 1.22rem;
+  font-weight: 700;
+  letter-spacing: .015em;
+  display: flex;
+  align-items: center;
+  gap: .65em;
+}
+
+.clinic-modal-header .modal-title i {
+  color: var(--accent);
+}
+
+.btn-close.btn-close-white {
+  filter: invert(1);
+  opacity: 0.83;
+}
+
+/* Modal footer */
+.clinic-modal-footer {
+  background: var(--card-bg);
+  border-bottom-right-radius: 17px;
+  border-bottom-left-radius: 17px;
+  border-top: none;
+  justify-content: flex-end;
+  box-shadow: none;
+  padding-top: .9em;
+  padding-bottom: .9em;
+  gap: 1em;
+}
+
+/* Accent buttons */
+.btn-modal-outline {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 13px;
+  font-weight: 600;
+  padding: 0.47em 1.3em;
+  font-size: 1rem;
+  transition: background 0.15s, color 0.14s, border 0.13s;
+}
+
+.btn-modal-outline:hover,
+.btn-modal-outline:focus {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.btn-modal-accent {
+  background: var(--accent);
+  color: #fff;
+  border: 2px solid var(--accent);
+  border-radius: 13px;
+  font-weight: 600;
+  padding: 0.47em 1.35em;
+  font-size: 1rem;
+  transition: background .13s, color .13s;
+  box-shadow: 0 2px 8px #00b4d813;
+}
+
+.btn-modal-accent:hover,
+.btn-modal-accent:focus {
+  background: #009ec7;
+  color: #fff;
+  border-color: #009ec7;
+}
+
+label {
+  font-weight: 500;
+  color: var(--primary-text);
+}
+
+input.form-control,
+textarea.form-control {
+  background: #fff !important;
+  border-radius: 10px !important;
+  color: var(--primary-text);
+  border: 1.5px solid #c1eaf4;
+  font-size: 1rem;
+  box-shadow: none !important;
+  transition: border-color .11s;
+}
+
+input.form-control:focus,
+textarea.form-control:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .clinic-modal-content {
+    padding: 0 0.5em;
+  }
+
+  .clinic-modal-header,
+  .clinic-modal-footer {
+    padding-left: .7em !important;
+    padding-right: .7em !important;
+  }
+}
+
+/* Change Password modal */
+/* Overlay modal background blur (optional, if backdrop is visible) */
+.modal-backdrop.show {
+  background: rgba(0,92,107,0.26);
+  backdrop-filter: blur(2px);
+}
+
+/* Change Password Modal Customization */
+
+.change-password-modal {
+  background: linear-gradient(120deg, var(--main-bg1), var(--main-bg2)) !important;
+  border-radius: 18px;
+  color: var(--primary-text);
+  box-shadow: 0 8px 36px rgba(0,92,107,0.12);
+  border: none;
+  overflow: hidden;
+}
+
+.change-password-modal .modal-header {
+  border-bottom: 1.5px solid var(--accent);
+  background: none;
+  color: var(--primary-text);
+  align-items: center;
+  padding: 1.2rem 1.5rem 1rem;
+}
+
+.change-password-modal .modal-title {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.015em;
+}
+
+.change-password-modal .btn-close {
+  filter: invert(1) grayscale(1);
+  opacity: 0.9;
+}
+
+.change-password-modal .modal-body {
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+}
+
+.change-password-modal label {
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 0.4em;
+}
+
+.change-password-modal .form-control {
+  background: #c3f1fb;
+  border-radius: 13px;
+  border: none;
+  color: var(--primary-text) !important;
+  font-size: 1.1rem;
+  padding-right: 2.7rem;
+  height: 48px;
+  font-weight: 500;
+  margin-bottom: 0.6em;
+  box-shadow: none;
+}
+
+.change-password-modal .form-control:focus {
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 2px var(--accent, #00B4D8);
+  outline: none;
+}
+
+.change-password-modal .position-relative {
+  margin-bottom: 1.4em;
+}
+
+.password-eye {
+  position: absolute;
+  top: 70%;
+  right: 1.3em;
+  transform: translateY(-50%);
+  font-size: 1.36em;
+  color: var(--accent);
+  cursor: pointer;
+  opacity: 0.72;
+  z-index: 2;
+  transition: color 0.2s;
+}
+.password-eye:hover {
+  color: var(--main-bg2);
+  opacity: 1;
+}
+
+.change-password-modal .modal-footer {
+  border-top: 1.5px solid var(--accent);
+  background: none;
+  justify-content: flex-end;
+  padding: 1.1rem 1.5rem;
+}
+
+.change-password-modal .btn {
+  min-width: 110px;
+  font-weight: 600;
+  font-size: 1.07em;
+  border-radius: 1.6em;
+  transition: background 0.18s, color 0.18s;
+}
+
+.change-password-modal .btn-outline-light, .change-password-modal .btn-cancel {
+  border: 1.5px solid #fff;
+  color: #fff;
+  background: transparent;
+}
+
+.change-password-modal .btn-outline-light:hover, .change-password-modal .btn-cancel:hover {
+  background: #fff;
+  color: var(--main-bg1);
+}
+
+.change-password-modal .btn-info, .change-password-modal .btn-change {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+}
+.change-password-modal .btn-info:hover, .change-password-modal .btn-change:hover {
+  background: var(--main-bg2);
+  color: #fff;
+}
+

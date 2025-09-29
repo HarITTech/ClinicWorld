@@ -1,0 +1,272 @@
+<!-- <h3 class="text-center text-dark fw-semibold my-4">
+  <i class="fa-solid fa-calendar-plus me-2"></i> Book Appointment
+</h3>
+<div class="container-fluid">
+  <div class="row mt-4">
+    @for (doctors of getAllDoctors; track $index) {
+    <div class="col-lg-4 col-md-6 col-sm-12 mb-4 d-flex justify-content-center">
+      <div class="card h-100 shadow-sm w-100 position-relative">
+
+
+        <button class="favorite-btn" (click)="toggleFavorite(doctors.doctor._id)"
+          [ngClass]="{'active': isFavorite(doctors.doctor._id)}" title="Add to Favorites">
+          <i class="fa-solid fa-heart"></i>
+        </button>
+
+
+        <img src="http://localhost:4800/{{ doctors.details.profilePhoto }}" class="card-img-top" alt="Doctor"
+          style="height: 200px; object-fit: cover;">
+
+        <p class="card-text">
+          <span>Clinic Status:</span>
+          <span [ngClass]="{'text-success': doctors.doctor.isClinicOpen, 'text-danger': !doctors.doctor.isClinicOpen}">
+            {{ doctors.doctor.isClinicOpen ? 'Open' : 'Closed' }}
+          </span>
+        </p>
+
+        <div class="card-body text-light">
+          <h5 class="card-title"><span>{{ doctors.doctor.name }}</span></h5>
+          <p class="card-text"><span>Specialization: </span>{{ doctors.doctor.specialization }}</p>
+          <p class="card-text"><span>Experience: </span>{{ doctors.details.experience }}+ years</p>
+          <p class="card-text"><span>Phone: </span>{{ doctors.doctor.phone }}</p>
+        </div>
+        <button class="btn animated-button mt-2" (click)="openFeedbackModal(doctors.doctor._id)">
+          Give Feedback
+        </button>
+
+        <div class="card-footer bg-white border-0 d-flex justify-content-between px-3 pb-3 bg-transparent text-body">
+          <button class="btn animated-button mx-1" (click)="bookAppointment(doctors)">Book Appointment</button>
+          <button class="btn animated-button mx-1" (click)="viewProfile(doctors.doctor._id)">View Profile</button>
+        </div>
+
+        <p class="card-text text-danger fw-semibold" *ngIf="!getCurrentAppointmentNumber(doctors.doctor.appointments)">
+          <i class="fa-solid fa-clock me-1"></i> No active patient
+        </p>
+
+        <p class="card-text text-primary fw-semibold" *ngIf="getCurrentAppointmentNumber(doctors.doctor.appointments)">
+          <i class="fa-solid fa-user-clock me-1"></i>
+          Ongoing Token: APPT#{{ getCurrentAppointmentNumber(doctors.doctor.appointments) }}
+        </p>
+
+      </div>
+    </div>
+    }
+  </div>
+</div> -->
+
+
+
+<div class="welcome-user">Welcome, {{username}}</div>
+
+<!-- Search Bar Centered Above All Cards -->
+<div style="width:100%; display:flex; justify-content:center; margin: 2rem 0;">
+  <div class="modern-search-bar" style="max-width: 360px; width: 100%;">
+    <button type="submit" aria-label="Search">
+      <i class="fas fa-search"></i>
+    </button>
+    <input type="search" class="form-control" placeholder="Search doctors..."
+      style="background: transparent; color: var(--sidebar-link-color);" [(ngModel)]="search"
+      (ngModelChange)="onSearchChange()" />
+  </div>
+</div>
+
+@for (doctors of filteredAppointments; track $index) {
+<div class="info-card">
+  <img src="{{ doctors.details.profilePhoto }}" class="info-card-img" alt="Profile photo">
+  <div class="info-card-body">
+    <div class="info-card-header">
+      <div class="info-card-name">{{ doctors.doctor.name }}</div>
+      <!-- <span class="clinic-status open">Open</span> -->
+      <span class="clinic-status"
+        [ngClass]="{'text-success': doctors.doctor.isClinicOpen, 'text-danger': !doctors.doctor.isClinicOpen}">
+        {{ doctors.doctor.isClinicOpen ? 'Open' : 'Closed' }}
+      </span>
+    </div>
+    <div class="info-card-special"><span class="info-card-meta">Specialization: </span>{{ doctors.doctor.specialization
+      }}</div>
+    <div class="info-card-meta">
+      Experience: {{ doctors.details.experience }} years &nbsp; | &nbsp; Phone: <span style="color:#bef6fd">{{
+        doctors.doctor.phone }}</span>
+    </div>
+    <div class="info-card-meta" style="font-size:0.96rem;">
+      Address: <span style="color:#bef6fd">{{doctors.details.clinicAddress.street}}, {{doctors.details.clinicAddress.city}} - {{doctors.details.clinicAddress.pinCode}}, {{doctors.details.clinicAddress.state}}, {{doctors.details.clinicAddress.country}}</span>
+    </div>
+    <div class="booked-appointments my-1">
+      <i class="fa-solid fa-calendar-check me-1"></i>
+      <span>Booked Appointments:</span>
+      <span class="booked-count">{{doctors.todayAppointmentCount}}<span
+          class="slash">/</span>{{doctors.doctor.maxTokensPerDay}}</span>
+    </div>
+    <!-- Appointment status -->
+    <p class="appointment-status text-danger fw-semibold"
+      *ngIf="!getCurrentAppointmentNumber(doctors.doctor.appointments)">
+      <i class="fa-solid fa-clock me-1"></i>
+      No active patient
+    </p>
+
+    <p class="appointment-status text-primary fw-semibold"
+      *ngIf="getCurrentAppointmentNumber(doctors.doctor.appointments)">
+      <i class="fa-solid fa-user-clock me-1"></i>
+      Ongoing Token: {{ getCurrentAppointmentNumber(doctors.doctor.appointments) }}
+    </p>
+
+    <div class="info-card-actions">
+      <!-- Favorite button (not favored) -->
+      <button class="fav-btn" (click)="toggleFavorite(doctors.doctor._id)"
+        [ngClass]="{'active': isFavorite(doctors.doctor._id)}" title="Add to Favorites">
+        <i class="fa-solid fa-heart"></i>
+      </button>
+      <!-- Rating -->
+      <span class="star-rating">
+        <ng-container *ngFor="let star of getStarRatings(doctors.doctor.averageRating)">
+          <i *ngIf="star === 'full'" class="fa-solid fa-star"></i>
+          <i *ngIf="star === 'half'" class="fa-solid fa-star-half-stroke"></i>
+          <i *ngIf="star === 'empty'" class="fa-regular fa-star"></i>
+        </ng-container>
+        {{doctors.doctor.averageRating}}
+      </span>
+
+      <!-- Buttons -->
+      <div class="info-cardBtns">
+        <button class="btn btn-sm" (click)="bookAppointment(doctors)">Book Appointment</button>
+        <button class="btn btn-sm" (click)="viewProfile(doctors.doctor._id)">View</button>
+        <button class="btn btn-sm" (click)="openFeedbackModal(doctors.doctor._id)">Give Feedback</button>
+      </div>
+    </div>
+  </div>
+</div>
+}
+
+<div class="modal fade show d-block" tabindex="-1" *ngIf="showModal" role="dialog" aria-modal="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content custom-modal-content shadow">
+      <div class="modal-header custom-modal-header">
+        <h5 class="modal-title">Book Appointment</h5>
+        <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label class="form-label">Patient Name</label>
+            <input type="text" class="form-control custom-form-control" [(ngModel)]="patientName" name="patientName"
+              required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Patient Age</label>
+            <input type="number" class="form-control custom-form-control" [(ngModel)]="patientAge" name="patientAge"
+              required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Problem / Symptoms</label>
+            <textarea class="form-control custom-form-control" [(ngModel)]="patientProblem" name="patientProblem"
+              required></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer custom-modal-footer">
+        <button type="button" class="btn btn-cancel" (click)="closeModal()">Cancel</button>
+        <button type="button" class="btn btn-confirm" (click)="confirmBooking()">Confirm Booking</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade show d-block" tabindex="-1" *ngIf="showProfileModal" role="dialog" aria-modal="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content custom-modal-content shadow">
+      <div class="modal-header custom-modal-header py-4 d-flex align-items-center">
+        <img width="40px" height="40px" src="{{myProfile.profilePhoto}}"
+          class="profileImg rounded-circle me-3" alt="profile" />
+        <h5 class="modal-title flex-grow-1">{{myProfile.name}}'s Profile</h5>
+        <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="closeProfile()"></button>
+      </div>
+      <div class="modal-body">
+        <p style="text-align: justify; color: var(--sidebar-link-color);">
+          <span>{{myProfile.name}}</span> is a dedicated and experienced Clinic Doctor with
+          <span>{{myProfile.experience}}</span> year(s) of professional medical experience. Known for providing
+          comprehensive health checkups, <span>{{myProfile.name}}</span> offers his expertise to patients at his clinic
+          located at <span>{{myProfile.clinicAddress}}</span>. He is available for consultations on
+          <span>{{myProfile.workingDays}}</span> between <span>{{myProfile.startTime}} to {{myProfile.endTime}}</span>.
+        </p>
+
+        <p style="color: var(--sidebar-link-color);">
+          Passionate about delivering quality care, <span>{{myProfile.name}}</span> has a strong background in general
+          health and wellness,
+          and he ensures each patient receives personalized attention. Professional credentials are validated by a
+          government-issued license, and patients can view his <a
+            href="{{myProfile.licenseCertificate}}" target="_blank" class="link-highlight">License
+            Certificate
+            here</a>.
+
+          For your convenience, the clinic's exact location can be viewed on
+          <a href="{{myProfile.clinicLocationURL}}" target="_blank" class="link-highlight">Google Maps</a>.
+        </p>
+
+        <p style="color: var(--sidebar-link-color);">
+          <span>{{myProfile.name}}</span> strives to maintain a welcoming and efficient environment, making him a
+          reliable choice for your routine health concerns and general medical needs.
+        </p>
+
+        <hr style="border-color: #244263;">
+
+        <h3 style="color: var(--highlight);">My Achievements</h3>
+        <div class="row">
+          <!-- Example iteration -->
+          @for (image of myProfile.achievements; track $index) {
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+            <div class="card shadow-sm">
+              <img src="{{image}}" class="card-img-top rounded" alt="Achievement"
+                style="height: 230px; object-fit: cover;">
+            </div>
+          </div>
+          }
+        </div>
+
+        <hr style="border-color: #244263;">
+
+        <h3 style="color: var(--highlight);">Clinic Images</h3>
+        <div class="row">
+          @for (image of myProfile.clinicPhotos; track $index) {
+          <div class="col mb-3">
+            <div class="card shadow-sm">
+              <img src="{{image}}" class="card-img-top rounded" alt="ClinicPhotos"
+                style="height: 230px; object-fit: cover;">
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+      <div class="modal-footer custom-modal-footer">
+        <button class="btn btn-cancel" (click)="closeProfile()">Back</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade show d-block" tabindex="-1" *ngIf="showFeedbackModal" role="dialog" aria-modal="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content custom-modal-content shadow p-4">
+      <h5 class="modal-title mb-3" style="color: var(--highlight);">Give Feedback</h5>
+
+      <div class="mb-3">
+        <label for="rating" class="form-label">Rating (1 to 5)</label>
+        <input id="rating" [(ngModel)]="feedbackRating" type="number" class="form-control custom-form-control" min="1"
+          max="5" placeholder="Enter rating between 1 to 5" />
+      </div>
+
+      <div class="mb-3">
+        <label for="comment" class="form-label">Comment</label>
+        <textarea id="comment" [(ngModel)]="feedbackComment" class="form-control custom-form-control" rows="3"
+          placeholder="Write your feedback..."></textarea>
+      </div>
+
+      <div class="d-flex justify-content-end gap-2">
+        <button class="btn btn-confirm" (click)="submitFeedback()">Submit</button>
+        <button class="btn btn-cancel" (click)="closeFeedbackModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

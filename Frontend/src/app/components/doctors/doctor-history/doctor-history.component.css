@@ -1,0 +1,272 @@
+.search-section {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+.modern-search-bar {
+  background-color: var(--searchbar-bg);
+  border-radius: 25px;
+  max-width: 500px;
+  margin: auto;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.modern-search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 1.1rem;
+  outline: none;
+}
+
+.modern-search-bar input::placeholder {
+  color: #dbeef5;
+}
+
+.modern-search-bar button {
+  background-color: var(--accent);
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.d-flex button{
+  background-color: var(--accent);
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.dashboard-title {
+  color: #dbeef5;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.appointments-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 992px) {
+  .appointments-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .appointments-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.appointment-card {
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.user-title {
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.user-age {
+  color: var(--secondary-text);
+  margin-bottom: 0.75rem;
+}
+
+.appt-detail {
+  margin-bottom: 0.5rem;
+}
+
+.appt-label {
+  font-weight: 600;
+  color: var(--success);
+}
+
+.appt-label-notcheck {
+  font-weight: 600;
+  color: var(--error);
+}
+
+hr{
+  height: 5px;
+  border: none;
+  width: 95%;
+  justify-self: center;
+  background-color: var(--primary-text);
+}
+
+
+/* pagination */
+/* ClinicWorld Pagination Customization */
+.clinic-pagination .page-link {
+  border: none;
+  border-radius: 10px !important;
+  color: var(--accent);
+  background: #fff;
+  font-weight: 600;
+  margin: 0 0.15rem;
+  font-size: 1.07rem;
+  transition: background 0.18s, color 0.18s;
+  box-shadow: 0 2px 8px 0 rgba(0,180,216,0.08);
+}
+
+.clinic-pagination .page-link:hover,
+.clinic-pagination .page-link:focus {
+  background: var(--accent);
+  color: #fff;
+  outline: none;
+}
+
+.clinic-pagination .page-item.active .page-link {
+  background: var(--accent);
+  color: #fff !important;
+  box-shadow: 0 4px 16px 0 rgba(0,180,216,0.13);
+}
+
+.clinic-pagination .page-item.disabled .page-link {
+  background: #d5eef6 !important;
+  color: #b3bfc8 !important;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.clinic-pagination {
+  --bs-pagination-padding-x: 0.85em;
+  --bs-pagination-padding-y: 0.48em;
+  --bs-pagination-bg: transparent;
+  --bs-pagination-border-width: 0;
+}
+
+@media (max-width: 600px) {
+  .clinic-pagination .page-link {
+    font-size: 0.97rem;
+    padding: 0.30em 0.65em;
+  }
+}
+
+
+
+
+/* If there is no appointments */
+.no-appt-container {
+  text-align: center;
+  padding: 2.8rem 1.6rem 2.3rem 1.6rem;
+  max-width: 390px;
+  margin: auto;
+  background: var(--card-bg);
+  border-radius: 22px;
+  box-shadow: 0 6px 24px 0 rgba(0, 120, 138, 0.09);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInUp .77s cubic-bezier(.38, 1.42, .58, .97);
+  border: 1px solid #c1eaf4;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(44px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.no-appt-icon {
+  background: var(--searchbar-bg);
+  border-radius: 50%;
+  width: 92px;
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 3px 15px 0 rgba(0, 180, 216, 0.10);
+  border: 3px solid var(--accent);
+  animation: popIn .9s cubic-bezier(.41, 1.02, .53, .97);
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  80% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.no-appt-icon i {
+  font-size: 2.6rem;
+  color: var(--accent);
+  filter: grayscale(40%);
+}
+
+.no-appt-title {
+  color: var(--primary-text);
+  font-weight: 700;
+  font-size: 1.32rem;
+  margin-bottom: 0.82rem;
+  letter-spacing: .02em;
+  line-height: 1.25;
+}
+
+.no-appt-sub {
+  color: var(--secondary-text);
+  font-size: 1.01rem;
+  margin-bottom: 0;
+  opacity: 0.85;
+}
+
+@media (max-width: 520px) {
+  .no-appt-container {
+    padding: 2rem 0.3rem 1.5rem 0.3rem;
+    max-width: 97vw;
+  }
+
+  .no-appt-title {
+    font-size: 1.08rem;
+  }
+
+  .no-appt-sub {
+    font-size: 0.95rem;
+  }
+
+  .no-appt-icon {
+    width: 66px;
+    height: 66px;
+  }
+}
