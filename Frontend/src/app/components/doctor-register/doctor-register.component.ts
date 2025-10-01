@@ -31,6 +31,9 @@ export class DoctorRegisterComponent {
     'endTime': "",
     maxTokensPerDay: "",
   }
+  signin(){
+    this.router.navigate(['/login']);
+  }
 
   onDayChange(event: Event) {
   const input = event.target as HTMLInputElement;

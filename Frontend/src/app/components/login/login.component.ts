@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../../services/login.service';
-import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -18,11 +18,16 @@ export class LoginComponent {
     private loginService: LoginService,
     private router: Router,
     private toastr: ToastrService,
-    private spinner: NgxSpinnerService
   ) { }
+
+  loading: boolean = false; // loader state
 
   signup(){
     this.router.navigate(['/user-registration']);
+  }
+
+  forgotPassword(){
+    this.router.navigate(['/forgot-password']);
   }
 
   userInfo = {
@@ -49,6 +54,8 @@ export class LoginComponent {
       return;
     }
 
+    this.loading = true;
+
     let doctorId: string | null = null;
 
     if (role === 'doctor') {
@@ -66,7 +73,6 @@ export class LoginComponent {
 
     this.loginService.login(role, this.userInfo).subscribe({
       next: (res) => {
-        this.spinner.show()
         const { token, user } = res;
 
         if (role === 'patient') {
@@ -94,16 +100,16 @@ export class LoginComponent {
             }
           });
         }
-
+        this.loading = false;
         this.userInfo = { email: '', password: '', role: '' };
       },
       error: (err) => {
-        this.spinner.hide()
         this.toastr.error(err?.error?.message || 'Login failed', '', {
           positionClass: 'toast-top-center',
           toastClass: 'ngx-toastr animate__animated animate__lightSpeedInRight',
           timeOut: 2000,
         });
+        this.loading = false;
       }
     });
   }

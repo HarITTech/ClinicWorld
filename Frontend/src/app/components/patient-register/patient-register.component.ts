@@ -23,6 +23,10 @@ export class UserRegisterComponent {
   password: boolean = false;
   c_password: boolean = false;
 
+  signin(){
+    this.router.navigate(['/login']);
+  }
+
   togglePassword(field: string) {
     if (field === 'pass') {
       this.password = !this.password

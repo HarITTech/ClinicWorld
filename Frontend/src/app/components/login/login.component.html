@@ -32,11 +32,14 @@
           <option value="patient">Patient</option>
         </select>
 
-        <a class="forgot-link">Forgot Password?</a>
+        <a class="forgot-link" (click)="forgotPassword()" type="button">Forgot Password?</a>
 
-        <button type="submit" class="login-btn" (click)="logIn()">Login</button>
+        <button type="submit" class="login-btn" (click)="logIn()" [disabled]="loading">
+          <span *ngIf="!loading">Login</span>
+        <div *ngIf="loading" class="loader"></div>
+        </button>
 
-        <p class="signup-text">Don't have an account? <a (click)="signup()">Create Account</a></p>
+        <p class="signup-text">Don't have an account? <a (click)="signup()" type="button">Create Account</a></p>
       </div>
     </div>
   </div>

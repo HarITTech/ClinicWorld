@@ -1,7 +1,7 @@
 <body>
   <button type="button" class="back-btn" onclick="history.back()">
-        <i class="fa-solid fa-arrow-left"></i> Back
-    </button>
+    <i class="fa-solid fa-arrow-left"></i> Back
+  </button>
   <div class="register-wrapper">
     <div class="glass-card">
       <!-- Left side: Form -->
@@ -36,6 +36,7 @@
             <!-- <i class='bx bx-show' id="togglePassword"></i> -->
           </div>
           <button type="submit" class="add-btn" (click)="addUser()">Sign Up</button>
+          <p class="signup-text text-center">Already have an account? <a (click)="signin()" style="color: var(--login-accent2);" type="button">Login here</a></p>
         </div>
       </div>
 

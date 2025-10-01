@@ -10,7 +10,6 @@ const editAppointments = require('../controllers/user/editAppointments')
 const favoriteDoctors = require('../controllers/user/favoriteDoctors');
 const cancelAppointment = require('../controllers/user/cancelAppointment');
 const giveFeedback = require('../controllers/user/giveFeedback');
-const {forgotPassword, resetPassword} = require('../controllers/user/forgotPassword');
 
 router.post('/user-registration', UserRegistration.userRegister);
 router.post('/user-login', UserRegistration.userLogIn);
@@ -27,7 +26,5 @@ router.post('/add-favorite', favoriteDoctors.addFavoriteDoctor);
 router.post('/remove-favorite', favoriteDoctors.removeFavoriteDoctor);
 router.get('/get-favorites/:userId', favoriteDoctors.getFavoriteDoctors);
 router.post('/give-feedback', giveFeedback.giveFeedback);
-router.post('/forgot-password', forgotPassword);
-router.post('/reset-password', resetPassword);
 
 module.exports = router;

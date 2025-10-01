@@ -5,6 +5,9 @@ require('dotenv').config();
 const path = require('path');
 const deleteAppointments = require('./helpers/autoDeleteExpiredAppointments');
 const nodeCron = require('./helpers/node-cron');
+const {forgotPassword, resetPassword} = require('./controllers/forgotPassword');
+const router = express.Router();
+
 
 const app = express();
 app.use(express.json());
@@ -30,6 +33,9 @@ app.use('/admin', adminRoutes);
 
 const userRoutes = require('./routes/user');
 app.use('/user', userRoutes);
+
+app.post('/forgot-password', forgotPassword);
+app.post('/reset-password', resetPassword);
 
 // deleteAppointments.autoDeleteExpiredAppointments();
 nodeCron();

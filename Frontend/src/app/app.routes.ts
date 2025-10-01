@@ -23,6 +23,8 @@ import { MainComponent } from './components/landingPage/main/main.component';
 import { ServicesComponent } from './components/landingPage/services/services.component';
 import { ContactComponent } from './components/landingPage/contact/contact.component';
 import { SubscriptionComponent } from './components/doctors/subscription/subscription.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 export const routes: Routes = [
   {
@@ -43,6 +45,8 @@ export const routes: Routes = [
   { path: 'doctor-status-rejected', component: DoctorStatusRejectedComponent, title: 'Status' },
   { path: 'subscription', component: SubscriptionComponent, title: 'Subscription' },
   { path: 'change-password/:token', component: ChangePasswordComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent, title: 'Forgot Password' },
+  { path: 'reset-password', component: ResetPasswordComponent, title: 'Reset Password' },
   {
     path: 'patient-dashboard',
     component: PatientDashboardComponent,

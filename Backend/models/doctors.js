@@ -116,7 +116,8 @@ const doctorSchema = new mongoose.Schema({
             default: "inProcess"
         }
     }],
-
+    resetPasswordToken: { type: String },
+    resetPasswordExpires: { type: Date },
     feedbacks: [feedbackSchema]
 });
 
