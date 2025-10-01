@@ -7,8 +7,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoginService {
-  private baseUrl = 'http://localhost:4800';
-  // private baseUrl = 'https://clinic-world.onrender.com';
+  // private baseUrl = 'http://localhost:4800';
+  private baseUrl = 'https://clinic-world.onrender.com';
 
   constructor(private http: HttpClient) {}
 
