@@ -74,7 +74,7 @@ export class LoginComponent {
           localStorage.setItem('userId', user._id);
           localStorage.setItem('userName', user.fullName);
           this.router.navigate(['/patient-dashboard/home']);
-          console.log('User details:', user)
+          // console.log('User details:', user)
         } else if (role === 'doctor' && doctorId) {
           this.loginService.getDoctorDetailsById(doctorId).subscribe((res) => {
             if (res.success && res.doctorDetail === null) {

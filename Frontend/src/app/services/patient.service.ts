@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class PatientService {
 
-  // private apiUrl = 'http://localhost:4800/user';
-  private apiUrl = 'https://clinic-world.onrender.com/user';
+  private apiUrl = 'http://localhost:4800/user';
+  // private apiUrl = 'https://clinic-world.onrender.com/user';
 
   constructor(
     private http: HttpClient

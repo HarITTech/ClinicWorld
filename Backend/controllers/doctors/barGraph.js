@@ -3,7 +3,7 @@ const Doctor = require('../../models/doctors');
 const getBarGraphData = async (req, res) => {
     const { doctorId } = req.params;
     const today = new Date().toISOString().split('T')[0];
-    console.log(today);
+    // console.log(today);
 
     try {
         const doctor = await Doctor.findById(doctorId);

@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DoctorService {
-  // private apiUrl = 'http://localhost:4800/doctors';
-  private apiUrl = 'https://clinic-world.onrender.com/doctors';
+  private apiUrl = 'http://localhost:4800/doctors';
+  // private apiUrl = 'https://clinic-world.onrender.com/doctors';
 
   constructor(private http: HttpClient) { }
 
@@ -122,10 +122,6 @@ export class DoctorService {
   }
 
   changePassword(doctorId: string, data: any): Observable<any> {
-    // const token = localStorage.getItem('authToken');
-    // const headers = new HttpHeaders({
-    //   Authorization: `Bearer ${token}`
-    // });
     return this.http.put(`${this.apiUrl}/change-password/${doctorId}`, data);
   }
 

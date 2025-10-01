@@ -63,7 +63,7 @@ export class SubscriptionComponent {
   ngOnInit() {
     this.username = this.authService.getDoctorName();
     this.doctorId = this.authService.getDoctorId();
-    console.log('Doctor ID:', this.doctorId);
+    // console.log('Doctor ID:', this.doctorId);
   }
 
   selectPlan(planType: string) {
