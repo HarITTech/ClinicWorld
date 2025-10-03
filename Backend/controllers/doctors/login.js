@@ -24,7 +24,7 @@ const login = async(req, res)=>{
         const token = jwt.sign(
             { id: isExist._id, name: isExist.name, email: isExist.email, phone: isExist.mobile },
             process.env.JWT_SECRET,
-            { expiresIn: '2h' }
+            { expiresIn: '7d' }
         );
 
         return res.status(200).json({
