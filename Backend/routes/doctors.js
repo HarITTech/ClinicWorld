@@ -22,6 +22,7 @@ const { getBarGraphData } = require('../controllers/doctors/barGraph');
 const { getPieGraphData } = require('../controllers/doctors/pieGraph');
 const verifyToken = require('../middlewares/authMiddleware');
 const { createSubscription, verifyPayment } = require('../controllers/doctors/createSubscription');
+const { bookAppointmentForPatinet } = require('../controllers/doctors/bookAppointmentsForUser');
 
 // Doctor registration
 router.post('/register', newRegistration);
@@ -107,6 +108,9 @@ router.get('/get-pie-data/:doctorId', getPieGraphData)
 router.post('/create-subscription', createSubscription);
 
 // verify payment
-router.post('/verify-payment', verifyPayment)
+router.post('/verify-payment', verifyPayment);
+
+// Book appointments for patients by doctor
+router.post('/book-appointment-for-patinet', bookAppointmentForPatinet)
 
 module.exports = router;
