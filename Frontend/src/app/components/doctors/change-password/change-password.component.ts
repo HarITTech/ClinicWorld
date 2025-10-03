@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ChangePasswordComponent {
 
-  constructor (
+  constructor(
     private doctorService: DoctorService,
     private toastr: ToastrService,
     private authService: AuthService
@@ -22,6 +22,7 @@ export class ChangePasswordComponent {
   oldPassword: string = '';
   newPassword: string = '';
   confirmPassword: string = '';
+  loading: boolean = false;
 
 
   showOldPassword: boolean = false;
@@ -46,6 +47,10 @@ export class ChangePasswordComponent {
       confirmPassword: this.confirmPassword
     }
 
+    console.log("Before call: loading =", this.loading);  // should log false
+    this.loading = true;
+    console.log("After set: loading =", this.loading);    // should log true
+
     this.doctorService.changePassword(doctorId, changeData).subscribe({
       next: (res: any) => {
         if (res && res.success) {
@@ -58,6 +63,7 @@ export class ChangePasswordComponent {
           this.newPassword = '';
           this.confirmPassword = '';
         }
+        this.loading = false;
       },
       error: (err) => {
         const message = err.error?.msg || "Something went wrong";
@@ -66,6 +72,7 @@ export class ChangePasswordComponent {
           toastClass: 'ngx-toastr animate__animated animate__lightSpeedInRight',
           timeOut: 2000,
         });
+        this.loading = false;
       }
     })
   }

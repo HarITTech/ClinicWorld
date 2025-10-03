@@ -39,6 +39,8 @@ export class DoctorProfileComponent implements OnInit {
   doctorName: string = '';
   isClinicOpen: boolean = false;
 
+  loading: boolean = false;
+
   editForm: any = {
     name: '',
     phone: '',
@@ -252,6 +254,8 @@ export class DoctorProfileComponent implements OnInit {
       formData.append('achievements', file);
     }
 
+    this.loading = true;
+
     this.doctorService.updateDoctorProfile(this.doctorId, formData).subscribe({
       next: () => {
         this.toastr.success('Profile updated successfully', '', {
@@ -266,6 +270,7 @@ export class DoctorProfileComponent implements OnInit {
             || new (window as any).bootstrap.Modal(modalElement);
           modalInstance.hide();
         }
+        this.loading = false;
       },
       error: (err) => {
         console.error('Update failed', err);
@@ -274,6 +279,7 @@ export class DoctorProfileComponent implements OnInit {
           toastClass: 'ngx-toastr animate__animated animate__lightSpeedInRight',
           timeOut: 2000,
         });
+        this.loading = false;
       }
     });
   }
@@ -304,6 +310,8 @@ export class DoctorProfileComponent implements OnInit {
       confirmPassword: this.confirmPassword
     }
 
+    this.loading = true;
+
     this.doctorService.changePassword(doctorId, changeData).subscribe({
       next: (res: any) => {
         if (res && res.success) {
@@ -317,6 +325,7 @@ export class DoctorProfileComponent implements OnInit {
           this.newPassword = '';
           this.confirmPassword = '';
         }
+        this.loading = false;
       },
       error: (err) => {
         const message = err.error?.msg || "Something went wrong";
@@ -325,6 +334,7 @@ export class DoctorProfileComponent implements OnInit {
           toastClass: 'ngx-toastr animate__animated animate__lightSpeedInRight',
           timeOut: 2000,
         });
+        this.loading = false;
       }
     })
   }

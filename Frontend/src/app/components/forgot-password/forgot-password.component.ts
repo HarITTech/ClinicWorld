@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ForgotPasswordService } from '../../services/forgot-password.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -18,7 +19,8 @@ export class ForgotPasswordComponent {
 
   constructor(
     private http: HttpClient,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private forgotPassword: ForgotPasswordService
   ) {}
 
   submit() {
@@ -33,8 +35,8 @@ export class ForgotPasswordComponent {
 
     this.loading = true;
 
-    this.http.post<any>('http://localhost:4800/forgot-password', { email: this.email })
-      .subscribe({
+    this.forgotPassword.forgotPassword(this.email).subscribe({
+    // this.http.post<any>('https://clinic-world.onrender.com/forgot-password', { email: this.email }).subscribe({
         next: (res) => {
           if (res.success) {
             this.message = res.message;

@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ForgotPasswordService } from '../../services/forgot-password.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -17,10 +18,14 @@ export class ResetPasswordComponent {
   token: string = '';
   loading: boolean = false;
 
+  showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private forgotPassword: ForgotPasswordService
   ) { }
 
   ngOnInit(): void {
@@ -28,6 +33,14 @@ export class ResetPasswordComponent {
     this.route.queryParams.subscribe(params => {
       this.token = params['token'];
     });
+  }
+
+  togglePassword(field: string) {
+    if (field === 'new') {
+      this.showPassword = !this.showPassword;
+    } else if (field === 'confirm') {
+      this.showConfirmPassword = !this.showConfirmPassword;
+    }
   }
 
   resetPassword() {
@@ -51,10 +64,9 @@ export class ResetPasswordComponent {
 
     this.loading = true;
 
-    this.http.post(`http://localhost:4800/reset-password?token=${this.token}`, {
-      password: this.password,
-      confirmPassword: this.confirmPassword
-    }).subscribe({
+    this.forgotPassword.resetPassword(this.token, {password: this.password, confirmPassword: this.confirmPassword}).subscribe({
+
+    // this.http.post(`http://localhost:4800/reset-password?token=${this.token}`, {password: this.password, confirmPassword: this.confirmPassword}).subscribe({
       next: (res: any) => {
         this.loading = false;
         if (res.success) {
