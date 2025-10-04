@@ -1,20 +1,12 @@
-const nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail');
 require('dotenv').config();
 
-// Gmail transporter (needs Render paid plan because SMTP is blocked on free)
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    secure: true,
-    auth: {
-        user: process.env.SMTP_USER,  // Gmail address
-        pass: process.env.SMTP_PASS,  // Gmail App Password
-    }
-});
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const sendEmailOfUsernamePassword = async (email, password, changePasswordLink) => {
-    const mailOptions = {
-        from: process.env.SMTP_USER,
+    const msg = {
         to: email,
+        from: process.env.MAIL_FROM,  // must match verified sender
         subject: 'Your Login Credentials',
         html: `
       <p>Welcome! Here are your login details:</p>
@@ -28,7 +20,7 @@ const sendEmailOfUsernamePassword = async (email, password, changePasswordLink) 
     };
 
     try {
-        await transporter.sendMail(mailOptions);
+        await sgMail.send(msg);
         console.log("✅ Mail sent to", email);
     } catch (err) {
         console.error("❌ Error sending mail:", err.message);
@@ -36,9 +28,9 @@ const sendEmailOfUsernamePassword = async (email, password, changePasswordLink) 
 };
 
 const forgotPasswordMail = async (email, name, resetLink) => {
-    const mailOptions = {
-        from: process.env.SMTP_USER,
+    const msg = {
         to: email,
+        from: process.env.MAIL_FROM,
         subject: 'Password Reset Request',
         html: `
       <p>Hello ${name},</p>
@@ -49,7 +41,7 @@ const forgotPasswordMail = async (email, name, resetLink) => {
     };
 
     try {
-        await transporter.sendMail(mailOptions);
+        await sgMail.send(msg);
         console.log("✅ Password reset mail sent to", email);
     } catch (err) {
         console.error("❌ Error sending reset mail:", err.message);
