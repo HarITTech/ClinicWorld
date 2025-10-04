@@ -31,7 +31,7 @@ const forgotPassword = async (req, res) => {
         account.resetPasswordExpires = Date.now() + 3600000; // 1 hour
         await account.save();
 
-        const resetLink = `http://localhost:4200/reset-password?token=${resetToken}`;
+        const resetLink = `https://clinic-world.vercel.app/reset-password?token=${resetToken}`;
 
         await forgotPasswordMail(account.email, account.fullName || account.name, resetLink);
 

@@ -48,7 +48,7 @@ const newRegistration = async (req, res) => {
         );
 
         // Change password URL (Frontend route)
-        const changePasswordLink = `http://localhost:4200/change-password/${token}`;
+        const changePasswordLink = `https://clinic-world.vercel.app/change-password/${token}`;
 
         // Send email with credentials + link
         await sendEmailOfUsernamePassword(email, password, changePasswordLink);
